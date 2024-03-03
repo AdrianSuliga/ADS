@@ -13,19 +13,15 @@ def sortT(T):
             j -= 1
         T[j + 1] = toInsert
 def searchT(T, x):
-    i, j = 0, len(T) - 1
-    while i < j:
-        if T[j] - T[i] == x:
-            return True
-        elif T[j-1] - T[i] == x:
-            return True
-        elif T[j] - T[i+1] == x:
-            return True
-        j-=1
-        i+=1
+    n = len(T)
+    for i in range(n - 1, -1, -1):
+        j = 0
+        while T[i] - T[j] > x:
+            j += 1
+        if T[i] - T[j] == x: return True
     return False
 
-T = [randrange(1, 10) for _ in range(20)]
+T = [262, 300, 310, 315, 317, 3200]
 sortT(T)
-print(searchT(T, 5))
+print(searchT(T, 17))
 print(T)
