@@ -10,32 +10,36 @@ class Node:
         self.val = val
         self.next = next
     def genList():
-        e5 = Node(16, None)
-        e4 = Node(12, e5)
-        e3 = Node(14, e4)
+        e5 = Node(1, None)
+        e4 = Node(2, e5)
+        e3 = Node(4, e4)
         e2 = Node(5, e3)
-        e1 = Node(3, e2)
+        e1 = Node(13, e2)
         e0 = Node(21, e1)
         return e0
-    def list_sort(p):
-        result = None
-        s = p
-        p = Node(None, p)
-        while p.next != None:
-            q = Node.find_max(p)
-            q.next = result
-            result = q
-        return s
-    def find_max(p):
-        maxi = 0
-        while p.next != None:
-            if p.next.val > maxi:
-                mem = p
-                maxi = p.next.val
+    def sort_list(p, k):
+        nNode = Node(None, p)
+        p = nNode
+        result = Node(None, None)
+        s = result
+        while p.next is not None:
+            q = Node.find_min(p, k)
+            result.next = q
+            result = result.next
+        return s.next
+    def find_min(p, k):
+        prev, it = p, 0
+        p = p.next
+        mini = p.val
+        while it < k and p.next is not None:
+            if p.next.val < mini:
+                prev = p
+                mini = p.next.val
             p = p.next
-        result = mem.next
-        mem.next = result.next
-        return result
+            it += 1
+        buffor = prev.next
+        prev.next = buffor.next
+        return buffor
     def print_list(p):
         while p is not None:
             print(p.val, "-> ", end='')
@@ -44,5 +48,5 @@ class Node:
     
 p = Node.genList()
 p.print_list()
-p.list_sort()
+p = p.sort_list(7)
 p.print_list()
