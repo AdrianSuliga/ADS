@@ -28,7 +28,7 @@ def searchArrayLog(T): # O(logn) - modyfikowane szukanie binarne
     n = len(T)
     return rec(T, n//2, 0, n - 1, -1)
 
-def worseBinSearch(T, m): # O(m logn) - szukanie binarne dla każdego m, skoro m > n to jest to gorsze niż zwykłe logn
+def worseBinSearch(T, m): # O(m logn) - szukanie binarne dla każdego m, skoro m > n to jest to gorsze niż n * logn
     def find(T, x, start, end):
         if start > end:
             return False

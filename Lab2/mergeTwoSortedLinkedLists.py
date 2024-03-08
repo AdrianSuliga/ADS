@@ -1,5 +1,5 @@
 """
-p1, p2 - posortowane listy odsyłaczowe. posortuj je
+p1, p2 - posortowane listy odsyłaczowe. scal je w 1 posortowaną listę
 """
 # iteracyjnie: jak w merge sorcie
 class Node:

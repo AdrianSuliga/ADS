@@ -1,5 +1,5 @@
 """
-Dana jest posortowana tablica i x, czy istnieją takie i, j, że T[i] + T[j] == x?
+Dana jest posortowana tablica T i x, czy istnieją takie i, j, że T[i] + T[j] == x?
 """
 def searchForSum(T, x):
     i, j = 0, len(T) - 1
