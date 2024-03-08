@@ -1,10 +1,6 @@
 """
 sort linked list (solution with selection sort)
 """
-# q = 12
-# 12 -> 14 -> None
-# r
-# 
 class Node:
     def __init__(self, val, next):
         self.val = val

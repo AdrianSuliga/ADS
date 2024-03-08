@@ -1,8 +1,8 @@
 """
 Czy istnieją i,j w posortowanej rosnąco tablicy takie że T[j] - T[i] == x 
 """
-#Przesuwać wskaźniki od końców (liniowe)
 from random import randrange
+
 def sortT(T):
     n = len(T)
     for i in range(1, n):
@@ -20,7 +20,7 @@ def searchT(T, x):
             j += 1
         if T[i] - T[j] == x: return True
     return False
-
+ 
 T = [262, 300, 310, 315, 317, 3200]
 sortT(T)
 print(searchT(T, 17))
