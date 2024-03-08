@@ -42,7 +42,3 @@ start = time.time()
 mergeSortClean(T)
 end = time.time()
 print(end - start)
-
-# [67, 16, 43, 67, 61, 37, 58, 24, 73, 29]
-#
-# 
