@@ -35,5 +35,7 @@ class Node:
 
 p = Node.gen_p()
 q = Node.gen_q()
+p.print_list()
+q.print_list()
 m = Node.merge_lists_rec(p, q)
 m.print_list()
