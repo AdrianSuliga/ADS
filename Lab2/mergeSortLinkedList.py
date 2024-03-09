@@ -1,3 +1,6 @@
+"""
+implement merge sort on linked list
+"""
 class Node:
     def __init__(self, val, next = None):
         self.val = val
@@ -52,7 +55,7 @@ class Node:
         return buffor
     
     def gen_list():
-        e6 = Node(5, None)
+        e6 = Node(9, None)
         e5 = Node(9, e6)
         e4 = Node(7, e5)
         e3 = Node(16, e4)
