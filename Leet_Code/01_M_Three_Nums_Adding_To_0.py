@@ -1,4 +1,31 @@
 class Solution:
+    def merge_sort(T):
+        n = len(T)
+        if n == 1: return
+        pivot = n // 2
+        L = T[:pivot]
+        R = T[pivot:]
+        Solution.merge_sort(L)
+        Solution.merge_sort(R)
+        
+        i, j, k = 0, 0, 0
+        while i < pivot and j < n - pivot:
+            if L[i] <= R[j]:
+                T[k] = L[i]
+                i += 1
+            else:
+                T[k] = R[j]
+                j += 1
+            k += 1
+        while i < pivot:
+            T[k] = L[i]
+            i += 1
+            k += 1
+        while j < n - pivot:
+            T[k] = R[j]
+            j += 1
+            k += 1
+
     def threeSum(self, nums: list[int]) -> list[list[int]]:
         nums.sort() # n logn
         result = set()

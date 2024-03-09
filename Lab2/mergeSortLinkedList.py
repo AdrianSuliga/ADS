@@ -42,14 +42,10 @@ class Node:
                 result.next = q
                 q = q.next
             result = result.next
-        while p != None:
+        if p != None:
             result.next = p
-            p = p.next
-            result = result.next
-        while q != None:
+        if q != None:
             result.next = q
-            q = q.next
-            result = result.next
         buffor = start.next
         start.next = None
         return buffor

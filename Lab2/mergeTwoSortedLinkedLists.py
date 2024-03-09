@@ -19,18 +19,12 @@ class Node:
                 q = q.next
             result = result.next
 
-        while p != None:
+        if p != None:
             result.next = p
-            result = result.next
-            p = p.next
-        while q != None:
+        if q != None:
             result.next = q
-            result = result.next
-            q = q.next
-        
         buffer = start.next
         start.next = None
-
         return buffer
     
     def merge_lists_rec(p, q):
