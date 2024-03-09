@@ -36,6 +36,7 @@ class Node:
     
     def sort_list(p):
         # ?
+        pass
 
     def extract_natural_sequence(p):
         if p == None:
