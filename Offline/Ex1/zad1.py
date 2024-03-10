@@ -1,10 +1,9 @@
 from zad1testy import Node, runtests
-
 """
 Program znajduje w liście najmniejszy element, usuwa go z listy i buduje za pomocą
 wycinanych elementów nową, już posortowaną listę. Wiedząc, że lista jest k-chaotyczna 
 zawężamy obszar poszukiwań najmniejszego elementu na takie odległe od początku listy o k
-W najgorszym przypadku algorytm sprawdzi wszystkie k liczb w liście, jako że lista ma n
+W najgorszym przypadku algorytm sprawdzi wszystkie k liczb w przedziale, jako że lista ma n
 elementów to uzyskana złożoność wynosi O(nk).
 k = O(1) => dostajemy O(n)
 k = O(logn) => dostajemy O(nlogn)
@@ -21,7 +20,7 @@ def SortH(p,k):
         q = extractSmallest(p, k) 
         result.next = q 
         result = result.next 
-    return s.next # s.next, bo ustawiłem s na wartownika na początku
+    return s.next # s.next, bo ustawiłem s na wartownika na początku 
 
 def extractSmallest(p, k):
     prev, it = p, 0
