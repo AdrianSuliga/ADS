@@ -1,3 +1,5 @@
+# slow solution to offline 2 - O(np) complexity, passes only 5/10 tests
+
 from random import randint
 def ksum(T, k, p):
     sum = 0
