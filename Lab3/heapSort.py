@@ -33,9 +33,7 @@ def parent(i):
     return (i - 1) // 2
 
 
-T = [randrange(100) for _ in range(1000000)]
-
-start = time.time()
-heap_sort(T)
-end = time.time()
-print(end - start)
+T = [randrange(10) for _ in range(6)]
+print(T)
+build_heap(T)
+print(T)
