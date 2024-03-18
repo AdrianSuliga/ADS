@@ -42,7 +42,7 @@ def ksum(T, k, p):
 
 def binary_insert(T:list, val):
     def find(T, ind, val, left, right, result):
-        if left > right: return -1
+        if left > right: return result
         if T[ind] <= val:
             right = ind - 1
         else:

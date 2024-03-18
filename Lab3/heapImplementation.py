@@ -8,6 +8,7 @@ def left(i):
     return 2 * i
 def right(i):
     return 2 * i + 1    
+
 def insert(T, v):
     i = T[0] + 1
     T[0] += 1
