@@ -1,91 +1,17 @@
 from zad3testy import runtests
 
-def dominance(P:list):
+def dominance(P):
     n = len(P)
-
-    X_sorted = P.copy()
-    Y_sorted = P.copy()
-
-    merge_sort_X(X_sorted)
-    merge_sort_Y(Y_sorted)
-
-    
-
-def binary_search_X(T, value, left, right):
-    if left > right: return -1
-    pivot = (left + right) // 2
-    if T[pivot] == value:
-        return pivot
-    elif T[pivot][0] < value[0]:
-        left = pivot + 1
-    else:
-        right = pivot - 1
-    return binary_search_X(T, value, left, right)
-
-def binary_search_Y(T, value, left, right):
-    if left > right: return -1
-    pivot = (left + right) // 2
-    if T[pivot] == value:
-        return pivot
-    elif T[pivot][1] < value[1]:
-        left = pivot + 1
-    else:
-        right = pivot - 1
-    return binary_search_Y(T, value, left, right)
-
-def merge_sort_X(T):
-    n = len(T)
-    if n == 1: return
-    pivot = n // 2
-    L = T[:pivot]
-    R = T[pivot:]
-    merge_sort_X(L)
-    merge_sort_X(R)
-
-    i, j, k = 0, 0, 0
-    while i < pivot and j < n - pivot:
-        if L[i][0] <= R[j][0]:
-            T[k] = L[i]
-            i += 1
-        else:
-            T[k] = R[j]
-            j += 1
-        k += 1
-    while i < pivot:
-        T[k] = L[i]
-        k += 1
-        i += 1
-    while j < n - pivot:
-        T[k] = R[j]
-        j += 1
-        k += 1
-    
-def merge_sort_Y(T):
-    n = len(T)
-    if n == 1: return
-    pivot = n // 2
-    L = T[:pivot]
-    R = T[pivot:]
-    merge_sort_Y(L)
-    merge_sort_Y(R)
-
-    i, j, k = 0, 0, 0
-    while i < pivot and j < n - pivot:
-        if L[i][1] <= R[j][1]:
-            T[k] = L[i]
-            i += 1
-        else:
-            T[k] = R[j]
-            j += 1
-        k += 1
-    while i < pivot:
-        T[k] = L[i]
-        k += 1
-        i += 1
-    while j < n - pivot:
-        T[k] = R[j]
-        j += 1
-        k += 1
-
+    dominant = P[0]
+    for i in range(1, n):
+        x = P[i][0]
+        y = P[i][1]
+        if min(x, y) > min(dominant[0], dominant[1]) or (min(x, y) == min(dominant[0], dominant[1]) and max(x,y) > max(dominant[0], dominant[1])):
+            dominant = P[i]
+    result = 0
+    for i in range(n):
+        if P[i][0] < dominant[0] and P[i][1] < dominant[1]:
+            result += 1
+    return result
 # zmien all_tests na True zeby uruchomic wszystkie testy
 runtests( dominance, all_tests = True )
