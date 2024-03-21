@@ -1,0 +1,1 @@
+# Liczby są ze zbioru B; |B| = log(n), posortować możliwie jak najszybciej

@@ -2,18 +2,18 @@ from zad3testy import runtests
 
 def dominance(P:list):
     n = len(P)
-    max_dominance = 0
+    max_dominance = -float('inf')
     is_dominated = [False for _ in range(n)]
-    max_point = P[0]
+    #max_point = P[0]
 
-    for i in range(1, n):
+    """for i in range(1, n):
         if P[i][1] > max_point[1]:
             max_point = P[i]
 
     for i in range(n):
         if P[i][0] < max_point[0] and P[i][1] < max_point[1]:
             max_dominance += 1
-            is_dominated[i] = True
+            is_dominated[i] = True"""
 
     for i in range(n):
         if is_dominated[i]: continue

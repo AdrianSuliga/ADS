@@ -88,4 +88,3 @@ def prepare_heaps(T):
     
 T = [7, 3, 100, 49, 50, 4, 83, 11, 58, 17]
 min_heap, max_heap = prepare_heaps(T)
-
