@@ -15,6 +15,7 @@ def partition(T, left, right):
     index += 1
     T[index], T[pivot] = T[pivot], T[index]
     return index
+
 def binary_search(T, value):
     n = len(T)
     left, right = 0, n - 1
