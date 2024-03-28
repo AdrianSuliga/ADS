@@ -16,7 +16,6 @@ def sort(T):
             k += 1
 
 def binary_search(T, val, left, right):
-    n = len(T)
     while True:
         pivot = (left + right) // 2
         if left > right: return (False, pivot + 1)
