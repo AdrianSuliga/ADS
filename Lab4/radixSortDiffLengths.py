@@ -33,12 +33,12 @@ def sort(T, ind): # O(n) in total
 def gen_string(length):
     result = ""
     for _ in range(length):
-        result += str(chr(randrange(ord('a'), ord('z'))))
+        result += str(chr(randrange(ord('a'), ord('z') + 1)))
     return result
 def gen_array(n):
     result = []
-    for i in range(n):
-        result.append(gen_string(randrange(3, 6)))
+    for _ in range(n):
+        result.append(gen_string(randrange(3, 15)))
     return result
 
 n = int(input("n="))
