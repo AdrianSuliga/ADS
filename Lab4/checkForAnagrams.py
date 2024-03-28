@@ -11,5 +11,6 @@ def are_anagrams(s1, s2, k): # O(n + k) solution
         if count_s[i] != 0: return False
     return True
 
-def are_anagrams_quicker(s1, s2, k): # use numpy to create array of size k in O(1)
-    pass                             # than zero only those chars that are from s1
+# use numpy to create array of size k in O(1)
+# than zero only those chars that are from s1
+# speeds up our program
