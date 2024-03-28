@@ -1,29 +1,25 @@
 from random import randint
-def quick_select(T, left, right, k):
-    if left >= right:
-        return T[left]
-    pInd = randint(left, right)
-    pInd = partition(T, left, right, pInd)
-
-    if k == pInd:
-        return T[k]
-    elif k < pInd:
-        return quick_select(T, left, pInd - 1, k)
-    else:
-        return quick_select(T, pInd + 1, right, k)
-
-def partition(T, left, right, pInd):
-    pivot = right
-    T[pInd], T[right] = T[right], T[pInd]
-    index = left - 1
-    for i in range(left, right):
-        if T[i] <= T[pivot]:
-            index += 1
-            T[i], T[index] = T[index], T[i]
-    index += 1
-    T[pivot], T[index] = T[index], T[pivot]
-    return index
-
-T = [randint(1, 100) for _ in range(10)]
-print(T)
-print(quick_select(T, 0, len(T) - 1, 1))
+class Solution:
+    def quick_select(T, k, left, right):
+        if left >= right: return T[left]
+        while True:
+            p_index = randint(left, right)
+            pivot = Solution.partition(T, left, right, p_index)
+            if k == pivot: return T[k]
+            elif k < pivot: right = pivot - 1
+            else: left = pivot + 1
+    
+    def partition(T, left, right, p_index):
+        pivot = right
+        T[p_index], T[right] = T[right], T[p_index]
+        ind = left - 1
+        for i in range(left, right):
+            if T[i] > T[pivot]:
+                ind += 1
+                T[i], T[ind] = T[ind], T[i]
+        ind += 1
+        T[ind], T[pivot] = T[pivot], T[ind]
+        return ind
+    
+    def findKthLargest(self, nums: list[int], k: int) -> int:
+        return Solution.quick_select(nums, k - 1, 0, len(nums) - 1)
