@@ -22,16 +22,13 @@ def quick_sort(T):
     return sort(T, 0, len(T) - 1)
 
 def bucket_sort(T, P):
-    n = len(T)
+    n, k = len(T), 0
     buckets = [[] for _ in range(n - 1)]
 
     for i in range(n):
         buckets[int(T[i]) - 1].append(T[i])
-
     for i in range(n - 1):
         selection_sort(buckets[i])
-        
-    k = 0
     for i in range(n - 1):
         for j in range(len(buckets[i])):
             T[k] = buckets[i][j]
