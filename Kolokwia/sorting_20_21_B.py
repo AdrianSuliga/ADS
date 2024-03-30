@@ -1,3 +1,4 @@
+# k-chaotyczna lista
 class Node:
     def __init__(self, val, next):
         self.val = val
