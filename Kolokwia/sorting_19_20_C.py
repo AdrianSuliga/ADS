@@ -19,10 +19,11 @@ def heapify(T, n, i):
     if mi != i:
         T[mi], T[i] = T[i], T[mi]
         heapify(T, n, mi) 
+        
 def check_condition(T):
     n = len(T)
-    sort(T)
-    for i in range(n - 1):
+    sort(T) # n logn
+    for i in range(n - 1): # n^2
         j, k = i + 1, n - 1
         while j < k:
             sum = T[j] + T[k]
