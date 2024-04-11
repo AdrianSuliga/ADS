@@ -1,5 +1,7 @@
 from kol1testy import runtests
 
+# Optimized n^2 solution
+
 def maxrank(T):
 	n = len(T)
 
