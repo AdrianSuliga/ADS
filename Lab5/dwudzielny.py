@@ -10,7 +10,7 @@ def is_bipartite(G):
     Stack = []
     colors = [0 for _ in range(n)]
     for i in range(n): # iterujemy po wszystkich n wierzchołkach na wypadek gdyby graf nie był spójny
-        if colors[i] == 0:
+        if colors[i] == 0: # jeśli nie odwiedzony
             Stack.append(i) # dodajemy na koniec stosu index wierzchołka od którego zaczynamy
             colors[i] = 1 # kolorujemy ów wierzchołek
             while len(Stack) > 0: # dopóki graf na którym jesteśmy jest spójny, to nie opuścimy tej pętli
