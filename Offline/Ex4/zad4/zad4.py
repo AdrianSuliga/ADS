@@ -16,7 +16,7 @@ def Flight(L, x, y, t):
             return True
     return False
 
-def DFSvisit(G, parent, v, cost, visited, d, y, t):
+def DFSvisit(G:list, parent:int, v:int, cost:int, visited:list, d:list, y:int, t:int) -> bool:
     visited[v] = True
     d[v] = common_part(d[parent], (cost - t, cost + t))
 
@@ -49,11 +49,17 @@ def rewrite_to_lists(L:list) -> list: # przepisz dany graf na postać listową
         G[edge[1]].append((edge[0], edge[2]))
     return G
 
-def size_of_graph(L): # policz ilość wierzchołków
+def size_of_graph(L:list) -> int: # policz ilość wierzchołków
     result = -1
     for edge in L:
         result = max(edge[0], edge[1], result)
     return result + 1
 
 # zmien all_tests na True zeby uruchomic wszystkie testy
-runtests( Flight, all_tests = True )
+# runtests( Flight, all_tests = True )
+L = input()
+L = eval(L)
+x = int(input())
+y = int(input())
+t = int(input())
+print(Flight(L, x, y, t))
