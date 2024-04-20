@@ -25,6 +25,6 @@ class Solution:
         return ans
     
 
-T = [1, 1, 1, 1]
+T = [3, 9, 16, 7, 1, 13, 11, 5]
 S = Solution()
 print(S.maximumGap(T))
