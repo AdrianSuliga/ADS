@@ -1,0 +1,1 @@
+# usuwając jedną krawędź, zepsuj najkrótszą ścieżkę

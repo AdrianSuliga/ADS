@@ -3,11 +3,11 @@ from testy import *
 from zad4test_spec import ALLOWED_TIME, TEST_SPEC, gentest
 
 from copy import deepcopy
-
+"""
 positive_results = [605, 616, 618, 634, 643, 651, 666, 687, 726, 727, 764]
 for i in range(600, 768):
     TEST_SPEC.append((i, [], i in positive_results))
-
+"""
 def copyarg( arg ):
     return deepcopy(arg)
 

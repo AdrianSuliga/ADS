@@ -56,10 +56,10 @@ def size_of_graph(L:list) -> int: # policz ilość wierzchołków
     return result + 1
 
 # zmien all_tests na True zeby uruchomic wszystkie testy
-# runtests( Flight, all_tests = True )
-L = input()
+runtests( Flight, all_tests = True )
+"""L = input()
 L = eval(L)
 x = int(input())
 y = int(input())
 t = int(input())
-print(Flight(L, x, y, t))
+print(Flight(L, x, y, t))"""
