@@ -1,4 +1,4 @@
-# offline 1 attempt with O(V*E) time complexity
+# offline 1 attempt with O(V!) time complexity
 def Flight(L, x, y, t):
     G = rewrite_to_lists(L)
     V = len(G)
