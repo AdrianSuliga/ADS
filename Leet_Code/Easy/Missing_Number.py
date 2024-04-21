@@ -1,4 +1,4 @@
-class Solution:
+class Solution: # Optimized O(n)
     def missingNumber(self, nums: list[int]) -> int:
         size = len(nums)
         result = size
