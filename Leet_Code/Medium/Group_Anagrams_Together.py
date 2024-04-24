@@ -7,12 +7,8 @@ class Solution:
             l.sort()
             m[str(l)].append(strs[i])
         return list(m.values())
-    
 
 print(Solution.groupAnagrams(Solution, ["eat","tea","tan","ate","nat","bat"]))
-
-
-
 
 """ passed 111/126 tests
     def areAnagrams(s1, s2):
