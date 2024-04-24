@@ -2,23 +2,20 @@
 def euler_cycle(G):
     result = []
 
-    DFSVisit(G, 0, G[0][0], result) # O(V + E) to złożoność DFS ale w każdym wywołaniu DFSVisit() używam 
-    result.append(0)                # funkcji o złożoności O(V), więc złożoność całości wyniesie nas O(VE + V^2)
+    DFSVisit(G, 0, G[0][0], 0, result) # O(V + E) to złożoność DFS ale w każdym wywołaniu DFSVisit() używam 
+    result.append(0)                # funkcji o złożoności O(1), więc złożoność całości wyniesie nas O(E + V)
 
     return result                   # złożoność pamięciowa to natomiast O(V + E) ze względu na reprezentację grafu
 
-def DFSVisit(G, u, v, result):
-    remove_edge(G, u, v)
-    for w in G[v]:
-        DFSVisit(G, v, w, result)
+def DFSVisit(G, u, v, u_idx, result):
+    remove_edge(G, u, v, u_idx)
+    for i in range(len(G[v])):
+        if i > len(G[v]): break
+        DFSVisit(G, v, G[v][i], i, result)
     result.append(v)
 
-def remove_edge(G, u, v): # O(V) w najgorszym przypadku - gdy u lub v będą połączone z ilością wierzchołków rzędu V
-    u_idx, v_idx = 0, 0
-    for i in range(len(G[u])):
-        if G[u][i] == v: 
-            v_idx = i
-            break
+def remove_edge(G, u, v, v_idx): # O(1) w najgorszym przypadku - gdy u lub v będą połączone z ilością wierzchołków rzędu V
+    u_idx = 0
     for i in range(len(G[v])):
         if G[v][i] == u:
             u_idx = i 
@@ -61,4 +58,4 @@ G = [
     [3, 6]
 ]
 
-print(euler_matrix(G))
+print(euler_cycle(G))

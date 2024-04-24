@@ -13,8 +13,6 @@ def strongly_coherent_parts(G:list) -> list:
     for i in range(n): # komórka z najstarszym czasem odwiedzenia - n, otrzyma numer 0, a z najmniejszym - n - 1
         T[n - times[i]] = i # biorę wierzchołek i, sprawdzam który był odwiedzony w pierwszym DFSie, następnie odwracam tą kolejność za pomocę n - times[i]
 
-    print(T)
-
     visited = [False for _ in range(n)]
     parts, k = [], 0
 
