@@ -4,7 +4,8 @@
 # uruchamiamy BFS, ale kolejka priorytetyzuje wierzchołki, do których
 # możemy dojść w 0
 from queue import Queue
-def cheapest_path(G:list, x:int, y:int) -> list:
+from queue import PriorityQueue
+def cheapest_path(G:list, x:int, y:int) -> list: # O(E + V)
     n = len(G)
     visited = [False for _ in range(n)]
     parent = [None for _ in range(n)]
@@ -43,6 +44,34 @@ def reverse(T:list) -> None:
         i += 1
         j -= 1
 
+def Dijkstra_algorithm(G:list, x:int, y:int) -> int: # O(ElogV)
+    n = len(G)
+    d = [float('inf') for _ in range(n)]
+    parent = [float('inf') for _ in range(n)]
+    Q = PriorityQueue()
+
+    d[x] = 0
+    for i in range(n):
+        Q.put((d[i], i))
+    
+    while not Q.empty():
+        _, u = Q.get()
+        for v, cost in G[u]:
+            if d[u] + cost < d[v]:
+                d[v] = d[u] + cost
+                parent[v] = u
+                Q.put((d[v], v))
+
+    result = []
+    result.append(y)
+    buffor = parent[y]
+    while buffor != x and buffor != None:
+        result.append(buffor)
+        buffor = parent[buffor]
+    result.append(x)
+    reverse(result)
+    return result        
+
 G = [
     [(1, 0), (4, 0)],
     [(0, 0), (2, 1), (5, 0)],
@@ -54,4 +83,5 @@ G = [
     [(6, 0), (8, 1)],
     [(3, 0), (7, 1)]
 ]
-print(cheapest_path(G, 0, 5))
+print(cheapest_path(G, 0, 8))
+print(Dijkstra_algorithm(G, 0, 8))
