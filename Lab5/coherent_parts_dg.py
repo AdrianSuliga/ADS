@@ -7,7 +7,6 @@ def strongly_coherent_parts(G:list) -> list:
 
     for i in range(n):
         if not visited[i]: DFSVisit(G, i, visited, times)
-    print(times)
 
     T = [0 for _ in range(n)] # w komórce i. przechowujemy kolejność odwiedzania wierzchołka i bazując na czasie odwiedzania z poprzedniego DFSa
     for i in range(n): # komórka z najstarszym czasem odwiedzenia - n, otrzyma numer 0, a z najmniejszym - n - 1
