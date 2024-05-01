@@ -12,16 +12,16 @@ def bridges(G:list) -> list:
     for u in range(n):
         if not visited[u]:
             DFSVisit(G, u, visited, parent, times, low)
-
+    print(low)
     for i in range(n):
         if parent[i] != None and times[i] == low[i]:
             bridge.append((parent[i], i))
 
     return bridge
 
-def DFSVisit(G, u, visited, parent, times, low):
+def DFSVisit(G:list, u:int, visited:list, parent:list, times:list, low:list) -> None:
     global time
-    min_par = float('inf')
+    min_anc = float('inf')
     min_ch = float('inf')
     ancs = []
     children = []
@@ -38,22 +38,22 @@ def DFSVisit(G, u, visited, parent, times, low):
         elif v != parent[u]: ancs.append(v)
         
     for i in range(len(ancs)):
-        min_par = min(min_par, times[ancs[i]])
+        min_anc = min(min_anc, times[ancs[i]])
 
     for i in range(len(children)):
         min_ch = min(min_ch, low[children[i]])
 
-    low[u] = min(times[u], min_par, min_ch)
+    low[u] = min(times[u], min_anc, min_ch)
 
 G = [
-    [1, 2, 3],
-    [0, 2],
-    [0, 1, 6],
-    [0, 4],
-    [3, 5],
-    [4],
-    [2, 7, 8],
-    [6, 8],
-    [6, 7]
+    [1, 2],
+    [0, 4, 7],
+    [0, 3, 4],
+    [2, 4],
+    [1, 2, 3, 5],
+    [4, 6, 7],
+    [5],
+    [1, 5, 8],
+    [7]
 ]
 print(bridges(G))
