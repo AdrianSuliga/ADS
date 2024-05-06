@@ -1,6 +1,6 @@
 from kol1testy import runtests
 
-def maxrank(T): # nlogn z błędem przy edge casie, w którym wiele razy powtarza się jednak liczba
+def maxrank(T): # nlogn z błędem przy edge casie, w którym wiele razy powtarza się jedna liczba
     n = len(T)
     G = [(T[i], i) for i in range(n)]
     pulled_numbers_cnt = 0
