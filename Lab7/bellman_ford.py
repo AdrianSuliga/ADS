@@ -1,3 +1,5 @@
+# znajduje najkrótsze ścieżki, jeśli w grafie
+# występuje cykl ujemny to zwraca pustą listę
 def shortest_path(G:list, s:int, e:int) -> list:
     n = len(G)
     d = [float('inf') for _ in range(n)]
@@ -14,7 +16,7 @@ def shortest_path(G:list, s:int, e:int) -> list:
     for u in range(n):
         for v, cost in G[u]:
             if d[v] > d[u] + cost:
-                return [None]
+                return []
 
     result = []
     result.append(e)
