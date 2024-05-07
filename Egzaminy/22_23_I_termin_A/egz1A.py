@@ -27,10 +27,17 @@ def standard_dijkstra(G, s, t):
 
     return d[t]
 
-def cheapest_path(G, gold, u, s, t, r):
+def cheapest_path(G:list, gold, u, s, t, r):
     n = len(G)
-    
+    for i in range(n):
+        G.append([])
+    for i in range(n):
+        for j in G[i]:
+            G[i + n].append((G[i][j][0] + n, 2 * G[i][j][1] + r))
+    G[u].append((u + n, 0))
+    G[u + n].append((u, 0))
+    return gold - min(standard_dijkstra(G, s, t), standard_dijkstra(G, s, t + n))
 
 
 # zmien all_tests na True zeby uruchomic wszystkie testy
-runtests( gold, all_tests = True )
+runtests( gold, all_tests = False )
