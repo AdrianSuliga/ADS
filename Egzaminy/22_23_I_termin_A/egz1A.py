@@ -4,7 +4,8 @@ from egz1Atesty import runtests
 # Adrian Suliga
 # Algorytm oblicza koszt drogi złycerza w każdym z 2V przypadków:
 # obrabował 1. zamek, nie obrabował 1. zamku, obrabował 2. zamek, nie obrabował 2. zamku, itd.
-# gdy rozważamy obrabowanie i. zamku, to algorytm 
+# gdy rozważamy obrabowanie i. zamku, to algorytm rozszerza graf o jego lustrzane odbicie, ale z krawędziami
+# o odpowiednio zwiększonych wagach. Szacuję złożoność algorytmu na O(VElog(VE)), czyli O(V^3 * logV)
 
 def gold(G, V, s, t, r):
     n = len(G)

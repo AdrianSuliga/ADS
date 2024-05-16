@@ -12,7 +12,7 @@ def shortest_path(G:list, s:int, e:int) -> list:
                 if d[u] + cost < d[v]:
                     d[v] = d[u] + cost
                     parent[v] = u
-    
+
     for u in range(n):
         for v, cost in G[u]:
             if d[v] > d[u] + cost:
@@ -47,4 +47,5 @@ G = [
     [(6, 5), (7, 4), (9, -8)],
     [(5, 10)]
 ]
+
 print(shortest_path(G, 0, 9))
