@@ -1,1 +1,0 @@
-# najkrótsza ścieżka z jednego źródła w DAGu
