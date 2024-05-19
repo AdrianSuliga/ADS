@@ -66,7 +66,6 @@ def path_with_dec_wages(G:list, x:int, y:int) -> list[int]: # search for path be
     
     return path
 
-
 G = [
     [(1, 9), (2, 7)],
     [(0, 9), (2, 11), (4, 12)],

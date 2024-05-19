@@ -11,11 +11,11 @@ def tourist_guide(G:list, K:int, s:int, e:int) -> int:
 
     while not Q.empty():
         u = Q.get()
-        for v, load in G[u]:
-            weight = min(load, d[u])
-            if weight > d[v]:
+        for v, bus_load in G[u]:
+            how_many_people_can_go = min(bus_load, d[u])
+            if how_many_people_can_go > d[v]:
+                d[v] = how_many_people_can_go                
                 parent[v] = u
-                d[v] = weight
                 Q.put(v)
     
     return ceil(K / d[e])
