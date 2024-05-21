@@ -24,8 +24,7 @@ def dijkstra_modified(G:list, C:list, Max_Fuel:int, Current_Fuel:int, start:int,
                 if length <= d + Amount_of_Fuel and cost[u][Amount_of_Fuel] + d * C[u] < cost[v][Amount_of_Fuel + d - length]:
                     cost[v][Amount_of_Fuel + d - length] = cost[u][Amount_of_Fuel] + d * C[u]
                     Q.put((cost[u][Amount_of_Fuel] + d * C[u], d + Amount_of_Fuel - length, v))
-        if u == end:
-            return cost
+                    
     return cost
 
 def create_graph(E:list) -> list:
