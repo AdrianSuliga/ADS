@@ -2,12 +2,48 @@ from queue import PriorityQueue
 from egz1Atesty import runtests
 
 # Adrian Suliga
+# Algorytm poszerza graf o jego lustrzane odbicie, ale z 
+# wagami krawędzi jak po obrabowaniu zamku. Dodatkowo każdy
+# wierzchołek z oryginalnej części jest połączony ze swoim
+# odpowiednikiem krawędzią o wadze 0. Na takim grafie
+# uruchamiamy algorytm Dijkstry. Złożoność czasową algorytmu 
+# szacuję na O(V^2 * logV), a pamięciową na O(E + V)
+
+def gold(G, V, s, t, r):
+    n = len(G)
+
+    Gr = [[] for _ in range(2 * n)]
+    d = [float('inf') for _ in range(2 * n)]
+    Q = PriorityQueue()
+
+    for i in range(n):
+        for j, cost in G[i]:
+            Gr[i].append((j, cost))
+            Gr[i + n].append((j + n, 2 * cost + r))
+            Gr[i].append((i + n, 0))
+    
+    d[s] = 0
+    Q.put((d[s], s))
+
+    while not Q.empty():
+        _, u = Q.get()
+        for v, cost in Gr[u]:
+            if v >= n and u < n and d[u] - V[u] < d[v]:
+                d[v] = d[u] - V[u]
+                Q.put((d[v], v))
+            elif d[u] + cost < d[v]:
+                d[v] = d[u] + cost
+                Q.put((d[v], v))
+
+    return min(d[t], d[t + n])
+
+# Adrian Suliga
 # Algorytm oblicza koszt drogi złycerza w każdym z 2V przypadków:
 # obrabował 1. zamek, nie obrabował 1. zamku, obrabował 2. zamek, nie obrabował 2. zamku, itd.
 # gdy rozważamy obrabowanie i. zamku, to algorytm rozszerza graf o jego lustrzane odbicie, ale z krawędziami
 # o odpowiednio zwiększonych wagach. Szacuję złożoność algorytmu na O(VElog(VE)), czyli O(V^3 * logV)
 
-def gold(G, V, s, t, r):
+"""def gold(G, V, s, t, r):
     n = len(G)
     result = float('inf')
     for u in range(n):
@@ -59,7 +95,7 @@ def cheapest_path(P:list, gold, x, s, t, r) -> int:
                 d[v] = d[u] + cost
                 Q.put((d[v], v))
  
-    return min(d[t], d[t + n] - gold)
+    return min(d[t], d[t + n] - gold)"""
 
 # zmien all_tests na True zeby uruchomic wszystkie testy
 runtests( gold, all_tests = True )

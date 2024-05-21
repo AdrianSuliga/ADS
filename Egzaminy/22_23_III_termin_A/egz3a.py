@@ -7,18 +7,20 @@ def goodknight( G, s, t ):
     Q = PriorityQueue()
 
     d[s][0] = 0
-    Q.put((d[s][0], 0, s)) # [koszt dotarcia do s przy i przejechanych godzinach, ilość przejechanych godzin, wierzchołek]
+    Q.put((d[s][0], 0, s)) # optymalny czas dotarcia do s, ilość h od ostatniego spania, wierzchołek
 
     while not Q.empty():
-        weight, hours, u = Q.get()
-        if weight == d[u][hours]:
-            for v, cost in G[u]:
-                if hours + cost <= 16 and d[u][hours] + cost < d[v][hours + cost]:
-                    d[v][hours + cost] = d[u][hours] + cost
-                    Q.put((d[v][hours + cost], hours + cost, v))
-                elif d[u][hours] + cost + 8 < d[v][cost]:
-                    d[v][cost] = d[u][hours] + cost + 8
-                    Q.put((d[v][cost], cost, v))
+        _, time, vertex = Q.get()
+
+        for neighbour, cost in G[vertex]:
+
+            if time + cost <= 16 and d[vertex][time] + cost < d[neighbour][time + cost]:
+                d[neighbour][time + cost] = d[vertex][time] + cost
+                Q.put((d[neighbour][time + cost], time + cost, neighbour))
+
+            if d[vertex][time] + cost + 8 < d[neighbour][cost]:
+                d[neighbour][cost] = d[vertex][time] + cost + 8
+                Q.put((d[neighbour][cost], cost, neighbour))
 
     return min(d[t])
 
