@@ -63,14 +63,3 @@ def cheapest_path(P:list, gold, x, s, t, r) -> int:
 
 # zmien all_tests na True zeby uruchomic wszystkie testy
 runtests( gold, all_tests = True )
-"""G = [
-    [(1,9), (2,2)],
-    [(0,9), (3,2), (4,6)],
-    [(0,2), (3,7), (5,1)],
-    [(1,2), (2,7), (4,2), (5,3)],
-    [(1,6), (3,2), (6,1)],
-    [(2,1), (3,3), (6,8)], 
-    [(4,1), (5,8)]
-]
-V = [25,30,20,15,5,10,0]
-print(cheapest_path(G, 30, 1, 0, 6, 7))"""
