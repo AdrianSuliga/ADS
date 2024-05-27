@@ -1,5 +1,14 @@
 from random import randint
 
+# f(i, b) - funkcja zwraca maksymalny zysk gdy rozważamy przedmioty [0, ..., i] i mamy pojemność b plecaka
+# f(i, b) = max { f(i - 1, b), f(i - 1, b - w[i]) + p[i] }
+#                     ^                        ^
+#                     |   bierzemy przedmiot i, zmniejszamy sobie tym samym pojemność plecaka i zwiększamy zysk                     
+#        nie bierzemy przedmiotu i
+
+# f(0, b) = p[0] gdy b >= w[0]
+# f(0, b) = p[0] gdy b < w[0]
+
 def knapsack(Weight:list, Profit:list, SackCapacity:int) -> tuple:
     n = len(Weight)
     F = [[0 for _ in range(SackCapacity + 1)] for _ in range(n)]
