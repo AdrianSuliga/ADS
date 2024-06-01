@@ -20,7 +20,24 @@ def print_solution(F:list, P:list, k:int) -> None:
     if P[k] != None: print_solution(F, P, P[k])
     print(F[k])
 
-A = [2, 1, 4, 3, 4, 8, 5, 7, 1]
+def LIS_memo(A:list) -> int:
+    result = -1
+    for i in range(len(A)): # O(n)
+        result = max(result, rec(A, i, {})) # ()
+    return result
 
-F, P = LIS(A)
-print_solution(A, P, 7)
+def rec(A:list, k:int, memo:dict) -> dict:
+    if k in memo: return memo[k]
+    if k == 0: return 1
+
+    result = 1
+
+    for t in range(k):
+        if A[t] < A[k]:
+            result = max(result, rec(A, t, memo) + 1)
+
+    memo[k] = result
+    return result
+
+A = [10,9,2,5,3,7,101,18]
+print(LIS(A))
