@@ -21,6 +21,18 @@ def min_money(M:list, x:int, memo:dict) -> int:
     memo[x] = min_val
     return memo[x]
 
-M = [1, 3, 4, 5]
-T = 7
-print(min_money(M, T, {}))
+def tab_min(M:list, x:int) -> int:
+    F = [float('inf') for _ in range(x + 1)]
+
+    F[0] = 0
+
+    for target_num in range(1, x + 1):
+        for coin in M:
+            if target_num >= coin:
+                F[target_num] = min(F[target_num], F[target_num - coin] + 1)
+
+    return F[x]
+
+M = [3, 4, 5]
+T = 1
+print(tab_min(M, T))
