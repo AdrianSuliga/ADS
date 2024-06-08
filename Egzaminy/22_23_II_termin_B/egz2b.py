@@ -14,12 +14,12 @@ def parking(X, Y):
     n, m = len(X), len(Y)
     F = [[inf for _ in range(m)] for _ in range(n)]
 
-    for j in range(m): # zapełniamy pierwsze
+    for j in range(m): # zapełniamy pierwszy wiersz
         F[0][j] = abs(X[0] - Y[j])
 
-    for i in range(1, n):
-        min_prev = F[i - 1][0]
-        for j in range(1, m):
+    for i in range(1, n): # zapełniamy tablicę wiersz po wierszu
+        min_prev = F[i - 1][0] # sprytnie zapamiętując poprzednią minimalną wartość f(i - 1, j - 1) 
+        for j in range(1, m): # tak aby sprawnie policzyć min { f(i - 1, k) | k < j }
             min_prev = min(min_prev, F[i - 1][j - 1])
             if i > j: continue
             F[i][j] = abs(X[i] - Y[j]) + min_prev
