@@ -11,6 +11,7 @@ def maxi_mini(A:list, k:int) -> int:
     pass
 
 
+
 A = [4, 9, 13, 3, 9, 32, 12, 18, 9, 3, 5, 23, 19]
 k = 5
 
