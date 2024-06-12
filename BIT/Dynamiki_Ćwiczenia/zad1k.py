@@ -7,6 +7,8 @@ from zad1ktesty import runtests
 # f(i, i) = 1 dla S[i] == 0
 # f(i, i) = -1 dla S[i] == 1
 # f(i, j) = -1 gdy i > j
+# Złożoność czasową i pamięciową algorytmu szacuję na O(n^2) z powodu zagnieżdżonych
+# w sobie pęli .
 
 def roznica( S ):
     n, result = len(S), -1
@@ -26,12 +28,3 @@ def roznica( S ):
     return result
  
 runtests ( roznica )
-#print(roznica("010001"))
-# 0 0 1
-
-# 1 0 0 0 0 0
-# 0-1 0 0 0 0
-# 0 0 1 0 0 0
-# 0 0 0 1 0 0
-# 0 0 0 0 1 0
-# 0 0 0 0 0-1
