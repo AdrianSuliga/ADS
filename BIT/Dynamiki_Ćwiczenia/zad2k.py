@@ -7,6 +7,7 @@ from zad2ktesty import runtests
 # f(i, j) = f(i + 1, j - 1) gdzie j - i > 1
 # f(i, i) = True
 # f(i - 1, i) = True gdy S[i - 1] == S[i]
+# Szacuję złożoność czasową algorytmu na O(n^2), a pamięciową na O(n^2)
 
 def palindrom(S):
     n = len(S)
