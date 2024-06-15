@@ -1,9 +1,15 @@
 from zad5ktesty import runtests
 
+# Adrian Suliga
+# Algorytm oblicza wartości funkcji f która zwraca krotkę:
 # f(i, j) = (maksymalna suma obecnego gracza, maksymalna suma następnego gracza)
 # f(i, i) = (T[i], 0)
 # f(i - 1, i) = (max(T[i - 1], T[i]), min(T[i - 1], T[i]))
-# f(i, j) = max { T[i] + f(i + 1, j)[1], T[j] + f(i, j - 1)[1] }
+# gdy A[i] + f(A, i + 1, j)[1] > A[j] + f(A, i, j - 1)[1]
+# to f(i, j) = A[i] + f(A, i + 1, j)[1] , f(A, i + 1, j)[0]
+# w przeciwnym wypadku: f(i, j) = A[j] + f(A, i, j - 1)[1], f(A, i, j - 1)[0]
+# Dzięki zastosowaniu słownika algorytm nie będzie rozpatrywał tych samych sytuacji 2 razy.
+# Szacuję złożoność czasową algorytmu na O(n^2), a pamięciową też na O(n^2)
 
 def garek ( A ):
     n = len(A)
