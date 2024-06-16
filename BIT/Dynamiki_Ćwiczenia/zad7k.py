@@ -23,28 +23,7 @@ def ogrodnik (T, D, Z, l):
 
     return F[n - 1][l]
 
-def calculate_cost(C:list, T:list, D:list) -> None:
-    n = len(D)
-    rows, cols = len(T), len(T[0])
-    visited = [[False for _ in range(cols)] for _ in range(rows)]
-    for i in range(n):
-        C[i] = travel(T, 0, D[i], visited)
-
-def travel(T, i, j, visited) -> int:
-    visited[i][j] = True
-    if T[i][j] == 0: return 0
-    result = T[i][j]
-
-    if i + 1 < len(T) and not visited[i + 1][j]:
-        result += travel(T, i + 1, j, visited)
-    if j + 1 < len(T[0]) and not visited[i][j + 1]:
-        result += travel(T, i, j + 1, visited)
-    if -1 < j - 1 and not visited[i][j - 1]:
-        result += travel(T, i, j - 1, visited)
-
-    return result
-
-# Podejście rekurencyjne, przechodzi 9/10 testów
+# Podejście rekurencyjne
 """def ogrodnik (T, D, Z, l):
     n = len(D)
     C = [0 for _ in range(n)]
@@ -62,7 +41,7 @@ def f(i, Z, C, L, memo):
         result = max(result, f(i - 1, Z, C, L - C[i], memo) + Z[i])
 
     memo[(i, L)] = result
-    return result
+    return result"""
 
 def calculate_cost(C:list, T:list, D:list) -> None:
     n = len(D)
@@ -82,7 +61,9 @@ def travel(T, i, j, visited) -> int:
         result += travel(T, i, j + 1, visited)
     if -1 < j - 1 and not visited[i][j - 1]:
         result += travel(T, i, j - 1, visited)
+    if -1 < i - 1 and not visited[i - 1][j]:
+        result += travel(T, i - 1, j, visited)
 
-    return result"""
+    return result
 
 runtests( ogrodnik, all_tests=True )
