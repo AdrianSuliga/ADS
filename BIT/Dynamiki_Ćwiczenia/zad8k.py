@@ -6,8 +6,11 @@ from zad8ktesty import runtests
 # napisu s[:i + 1] na napis t[:j + 1]
 # f(i, j) = f(i - 1, j - 1) gdy s[i] == s[j]
 # f(i, j) = min { f(i - 1, j), f(i - 1, j - 1), f(i, j - 1) } + 1
+# f(i, j) = f(i - 1, j) + 1 - sytuacja reprezentuje usunięcie ostatniego znaku s
+# f(i, j) = f(i, j - 1) + 1 - sytuacja reprezentuje dodanie brakującego znaku na końcu t
+# f(i, j) = f(i - 1, j - 1) + 1 - sytuacja reprezntuje zastąpienie ostatniego znaku s, ostatnim znakiem t 
 # f(0, j) = j
-# f(i, 0) = i  
+# f(i, 0) = i 
 
 def napraw(s, t):
     n, m = len(s), len(t)
