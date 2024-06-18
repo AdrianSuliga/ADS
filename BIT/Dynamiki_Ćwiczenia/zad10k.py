@@ -2,20 +2,35 @@ from zad10ktesty import runtests
 from math import inf
 
 # Adrian Suliga
+# Algorytm oblicza najpierw wartości funkcji f takiej że:
 # f(i) - najmniejsza liczba dywanów potrzebnych do pokrycia i powierzchni
 # f(i) = min { f(i - j*j) | 1 <= j <= sqrt(i) } + 1
+# Wartości zapamiętujemy w tablicy, dlatego zajmuje nam to tylko O(n * sqrt(n))
+# Pierwiastek wynika z pętli w funkcji rekurencyjnej.
+# Odpowiedź do zadania uzyskujemy powtarzając działanie rekurencji ale od drugiej strony
+# Szacuję złożoność czasową i pamięciową algorytmu na O(N * sqrt(N))
 
 def dywany(N):
     F = [inf for _ in range(N + 1)]
     F[1] = 1
 
     F[N] = f(N, F)
+    answer = []
     
-    print(F)
+    while N != 0:
+        mini = inf
+        result = inf
+        for i in range(1, int(N**(0.5)) + 1):
+            if N - i*i < 0: break
+            if mini > f(N - i*i, F):
+                mini = f(N - i*i, F)
+                result = i
+        answer.append(result)
+        N -= result**2
 
-    return []
+    return answer
 
-def f(i, F): # O(n * sqrt(n))
+def f(i, F): # O(n * sqrt(n)) czasowo i pamięciowo
     if F[i] != inf: return F[i]
     if i == 1 or i == 0: return i
 
@@ -52,5 +67,4 @@ def f(target, memo):
     memo[target] = result
     return result"""
 
-#runtests( dywany )
-print(dywany(6))
+runtests( dywany )
