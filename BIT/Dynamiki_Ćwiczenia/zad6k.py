@@ -11,7 +11,6 @@ from zad6ktesty import runtests
 
 def haslo ( S ):
     n = len(S)
-    print(S)
     F = [0 for _ in range(n)]
     
     F[0] = 1
